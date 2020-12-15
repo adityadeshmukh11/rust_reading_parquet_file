@@ -14,17 +14,17 @@
 // }
 fn main() {
     let the_file = r#"{
-        "FirstName": "John",
-        "LastName": "Doe",
-        "Age": 43,
-        "Address": {
-            "Street": "Downing Street 10",
-            "City": "London",
-            "Country": "Great Britain"
-        },
-        "PhoneNumbers": [
-            "+44 1234567",
-            "+44 2345678"
+        "Name": "Aditya Deshmukh",
+        "Age": 21,
+        "Address": [
+            {"Street": "Mg Road",
+            "City": "Mumbai",
+            "Country": "India",
+            "Country_Code":91}
+        ],
+        "Userdata": [
+            "First_Name":"aditya",
+            "Last_Name":"deshmukh"
         ]
     }"#;
 
