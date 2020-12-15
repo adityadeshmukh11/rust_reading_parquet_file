@@ -45,10 +45,8 @@ use std::error::Error;
 
 // use crate::fs::io::sys::ext::net::raw_fd::net::parser::Error;
 
-
-
 fn reader_parquet()
-{let file = File::open(&Path::new("/home/aditya/Desktop/final_wala/hello_cargo/parquet/sample.parquet")).unwrap();
+{let file = File::open(&Path::new("/home/aditya/Desktop/new_beginning/abc/rust_reading_parquet_file/file1.parquet")).unwrap();
     let reader = SerializedFileReader::new(file).unwrap();
     let mut iter = reader.get_row_iter(None).unwrap();
     while let Some(record) = iter.next() {
@@ -129,7 +127,7 @@ fn write_parquet() -> Result<(), Box<dyn Error>> {
 }
 
 fn main() {
-    // reader_parquet();
+    reader_parquet();
     // writer_parquet();
-    write_parquet();
+    // write_parquet();
 }
