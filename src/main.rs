@@ -98,6 +98,8 @@ fn write_parquet() -> Result<(), Box<dyn Error>> {
     let mut writer = SerializedFileWriter::new(file, schema, props).unwrap();
     let mut row_group_writer = writer.next_row_group().unwrap();
     let mut col_number = 0;
+    // let var1: Vec<String> = ["abc".to_string(), "xyz".to_string()].to_vec();
+    // let var2: Vec<String> = ["hello".to_string(), "world".to_string()].to_vec();
 
     while let Some(mut col_writer) = row_group_writer.next_column().unwrap() {
         col_number = col_number + 1;
@@ -107,18 +109,18 @@ fn write_parquet() -> Result<(), Box<dyn Error>> {
                 // I can remove this if-else when I start taking fn parameters of my schema and columns
                 if col_number == 1 {
                     typed_writer.write_batch(
-                        &[parquet::data_type::ByteArray::from("123-adf"), parquet::data_type::ByteArray::from("John Doe")], None, None
+                        &[parquet::data_type::ByteArray::from("Aditya"), parquet::data_type::ByteArray::from("Mumbai")], None, None
                     )?;
                 } else {
                     typed_writer.write_batch(
-                        &[parquet::data_type::ByteArray::from("John Doe"), parquet::data_type::ByteArray::from("123-adf")], None, None
+                        &[parquet::data_type::ByteArray::from("John Doe"), parquet::data_type::ByteArray::from("Aditya")], None, None
                     )?;
                 }
             },
             ColumnWriter::Int64ColumnWriter(ref mut typed_writer) => {
                 println!("writing an integer");
                 typed_writer.write_batch(
-                    &[255,255], None, None
+                    &[12,25], None, None
                 )?;
             },
             _ => {}
@@ -163,7 +165,7 @@ fn main() {
 
 
     //verify the content
-    let text = [49, 50, 51, 45, 97, 100, 102];
+    let text = [65, 100, 105, 116, 121, 97];
     let s = String::from_utf8_lossy(&text);
     println!("{}", s);
 }
